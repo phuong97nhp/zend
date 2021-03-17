@@ -1,0 +1,32 @@
+version: "3.7"
+networks: 
+  dockerrize_network:
+    driver: bridge
+services:
+  mariadb:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    ports:
+      - "3306:3306"
+    volumes: 
+      - "./data:/var/lib/mysql"
+    networks: 
+      - dockerrize_network
+  redis:
+    image: redis
+    volumes: 
+      - "./cache:/data"
+    restart: always
+    networks: 
+      - dockerrize_network
+    ports:
+      - "6379:6379"
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8888:8080"
+    networks: 
+      - dockerrize_network
