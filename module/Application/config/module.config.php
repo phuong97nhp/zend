@@ -1,10 +1,4 @@
 <?php
-/**
- * @link      http://github.com/zendframework/ZendSkeletonApplication for the canonical source repository
- * @copyright Copyright (c) 2005-2016 Zend Technologies USA Inc. (http://www.zend.com)
- * @license   http://framework.zend.com/license/new-bsd New BSD License
- */
-
 namespace Application;
 
 use Zend\Router\Http\Literal;
@@ -34,26 +28,11 @@ return [
                     ],
                 ],
             ],
-            'city' => array(
-                'type'    => Segment::class,
-                'options' => array(
-                    'route'    => 'thanh-pho[/:action][/:id]',
-                    'constraints' => array(
-                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                        'id'     => '[0-9]+',
-                    ),
-                    'defaults' => array(
-                        'controller' => Controller\CityController::class,
-                        'action'     => 'index',
-                    ),
-                ),
-            ),
         ],
     ],
     'controllers' => [
         'factories' => [
             Controller\IndexController::class => InvokableFactory::class,
-            Controller\CityController::class => InvokableFactory::class,
         ],
     ],
     'view_manager' => [

@@ -1,27 +1,27 @@
 <?php
-namespace Application\Controller;
+namespace Album\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
-class CityController extends AbstractActionController
+class AlbumController extends AbstractActionController
 {
     public function indexAction()
     {
-        return new ViewModel();
+        return new ViewModel([
+            'albums' => $this->table->fetchAll(),
+        ]);
     }
 
     public function addAction()
     {
-        return new ViewModel();
     }
 
     public function editAction()
     {
-        return new ViewModel();
     }
+
     public function deleteAction()
     {
-        return new ViewModel();
     }
 }

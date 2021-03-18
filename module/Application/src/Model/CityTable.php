@@ -1,14 +1,17 @@
-<?php 
+<?php
 
-namespace Model;
+namespace City\Model;
 
- use Zend\Db\TableGateway\TableGateway;
+use Zend\Db\TableGateway\TableGateway;
+use RuntimeException;
+use Zend\Db\TableGateway\TableGatewayInterface;
+
 
  class CityTable
  {
      protected $tableGateway;
 
-     public function __construct($tableGateway)
+     public function __construct(TableGateway $tableGateway)
      {
          $this->tableGateway = $tableGateway;
      }
@@ -30,7 +33,7 @@ namespace Model;
          return $row;
      }
 
-     public function saveCity($City)
+     public function saveCity(City $City)
      {
          $data = array(
              'artist' => $City->artist,
